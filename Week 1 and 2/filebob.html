@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>URL FILE</h1>
+
+    <script>
+        
+        fetch('https://fastly.picsum.photos/id/265/500/500.jpg?hmac=S14ePJWSP0umupBxMyQsc_Xm4p9fgztmW5ehU8qKA0o')
+            .then(res => res.blob()) //accessing fetch results
+            //.then(blob => console.log(blob))
+
+            //converting blob to a file
+            .then(blob => {
+                // readFile(blob);
+
+                const file = new File([blob], 'image', {type: blob.type});
+                readFile(file);
+            });
+
+            //Reading from a file
+           function readFile(input){
+             const fr = new FileReader();
+
+            //read data as URL 
+             fr.readAsDataURL(input);
+             
+             //add event listener
+             fr.addEventListener('load', () => {
+                const res = fr.result;
+                console.log(res)
+             })
+
+           }  
+    </script>
+</body>
+</html>

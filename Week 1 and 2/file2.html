@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" onchange="readFile(this)">
+    
+    <script>
+        let response = await fetch(url);
+
+        if(response.ok){ //if HTTP-status is 200-299
+            //get the response body (see below)
+
+            let json = await response.json();
+        }else{
+            console.log("HTTP-Error: " + response.status);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <iframe src="/" style="height: 80px" name="win" id="iframe"></iframe>
+    <script>
+        let oldDoc = iframe.contentDocument;
+        iframe.onload = function(){
+            let newDoc = iframe.contentDocument;
+            //The loaded documenr is not the same as initial!
+            alert(oldDoc == newDoc); //false
+        };
+
+
+        let oldDoc = iframe.contentDocument;
+
+        // every 100 ms check if the document is the new on
+        let time = setInterval(() => {
+           let newDoc = iframe.contentDocument;
+           if(newDoc == oldDoc) return;
+
+           alert("New document is here!");
+           clearInterval(time);
+            
+        }, 100);
+
+        alert(iframe.contentWindow == frame[0]);
+        alert(iframe.contentWindow == frames.win);
+
+    </script>
+
+</body>
+</html>

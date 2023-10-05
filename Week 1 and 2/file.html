@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" onchange="readFile(this)">
+
+    <script>
+        // function showFile(input){
+        //     let file = input.files[0];
+
+        //     let reader = new FileReader();
+
+        //     reader.readAsText(file);
+
+        //     reader.onload = function(){
+        //         console.log(reader.result);
+        //     };
+
+        //     reader.onerror = function(){
+        //         console.logo(reader.error);
+        //     };
+
+        //     // alert('File name: ${file.name}'); // e.g my.png
+        //     // alert('Last modified: ${file.lastModified}'); //e.g 1552830408824
+
+        // }
+     
+        //To get a JSON-object with latest commits from Github
+
+        let response = await fetch('https://github.com/Mpintshi?tab=repositories');
+
+        if (response.ok){ //if HTTP-status is 200-299
+           
+            //get the response body(see below)
+            let json = await response.json();
+
+            alert(commits[0].author.login);
+        }else{
+            alert("HTTP-Error: " + response.status);
+        }
+
+    </script>
+</body>
+</html>
